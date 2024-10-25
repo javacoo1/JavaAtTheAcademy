@@ -29,6 +29,7 @@ public class Test_NGame2 {
 			//예외처리
 			if (ans > 100 || ans < 1) {
 				System.out.println("you have to write 1~100");
+				i--;
 				continue;
 			}
 			
@@ -38,11 +39,11 @@ public class Test_NGame2 {
 				} else if (ans < com) {
 					System.out.println("Up");			
 				} else {
-					System.out.printf("Correct. You got it right in %d.\n", i);
+					System.err.printf("Correct. You got it right in %d.\n", i);
 					break;
 				}
 				
-				System.out.println("--------------");
+				System.out.println("the results--------");
 				
 				if (ans > com) {
 					a = "Down";
@@ -52,7 +53,7 @@ public class Test_NGame2 {
 				totalValue += (a + "  |  ");
 				System.out.println(totalValue);
 				System.out.printf("Remaining chance: %d\n", (10 - i));
-				System.out.println("--------------");
+				System.out.println("-------------------");
 				
 				if (i == 10) {
 					System.out.println("Game Over...");

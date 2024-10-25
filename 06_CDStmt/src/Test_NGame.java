@@ -11,33 +11,26 @@ public class Test_NGame {
 		
 		// 컴퓨터 숫자 뽑기
 		int corr = ran.nextInt(100) + 1;
-		System.out.println(corr);
+//		System.out.println(corr);
 		
-		// 유저 입력 받기
-		System.out.print("Num(1~100) : ");
-		int ans = sc.nextInt();
 		
 		// 판정
 			//결과에 따라 "정답", "업", "다운"
 		for (int i =0; i < 10; i++) {
+			// 유저 입력 받기
+			System.out.print("Num(1~100) : ");
+			int ans = sc.nextInt();
+			
 		if (ans > corr) {
 			System.out.println("Down");
-			return;
+
 		} else if (ans < corr) {
 			System.out.println("Up");			
-			return;
+
 		} else {
 			System.out.println("Correct");
+		break;
 		}
-	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	}	
 	}
 }
