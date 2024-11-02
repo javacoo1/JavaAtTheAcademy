@@ -75,8 +75,17 @@ public class CMain04 {
 			}
 		}
 		
-		for (Integer i : lotto) {
-			System.out.print(i + "  ");
+		ArrayList<Integer> toArr = new ArrayList<Integer>(lotto);
+		Comparator<Integer> bySize = new Comparator<Integer>() {
+			
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o1.compareTo(o2);
+			}
+		};
+		toArr.sort(bySize);
+		for (Integer integer2 : toArr) {
+			System.out.print(integer2 + "  ");
 		}
 
 	}
