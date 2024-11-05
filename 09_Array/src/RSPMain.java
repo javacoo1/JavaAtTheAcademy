@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class RSPMain {
 	public static void main(String[] args) {
-		// 가위바위보
 		Scanner sc = new Scanner(System.in);
 		Random ran = new Random();
 
@@ -30,12 +29,12 @@ public class RSPMain {
 			System.out.println("------------");
 			System.out.print("please pick : ");
 			
-			// 글자 치면 승률에 영향이 감. 수정 필요
 			try {
 				user = sc.nextInt();								
 			} catch (InputMismatchException e) {
 				System.out.println("please write number");
 				sc.next();
+				count -= 1;		//***
 				
 			}
 			
@@ -51,18 +50,18 @@ public class RSPMain {
 				System.out.printf("you      : %s\n", handTbl[user]);
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.err.println("please pick from 1 to 4");
+				count -= 1;		//***
 			} 
 
 			// 판정 & 결과  
-			//**********user랑 com을 연산해서 더 짧게 줄이기***********
-			if (user == com) {
+			int result = com - user;		//***
+			if (result == 0) {
 				System.err.println("   draw");
-			} else if ((com == 1 && user == 2) || (com == 2 && user == 3) || (com == 3 && user == 1)) {
+			} else if (result == 2 || result == -1) {
 				win += 1;
 				winningStreak += 1;
 				System.err.println("   win");
-			} else if ((com == 1 && user == 3) || (com == 2 && user == 1) || (com == 3 && user == 2)) {
-				//************이 if문이 굳이 여기있을 필요 없을듯. 현재 if문 위로 빼자*************
+			} else if (result == 1 || result == -2) {
 				if (winningStreak >= mostWins) {
 				mostWins = winningStreak;
 				}
@@ -70,15 +69,12 @@ public class RSPMain {
 				System.err.println("   lose");
 			}
 			
-			
-			//**************에러에서 총게임수가 증가하는 문제 발생 // 범위관련 try-catch를 if로 바꾼 뒤, 거기에 count--를 하자*********
 			count += 1;
 			System.out.println("----------------------result");
 			System.out.printf("On a winning streak %d times!\n", winningStreak);
 
 			oow = ((double) win / count) * 100;
-			System.out.printf("odds of winning : %.0f", oow);         //**********원하는 위치에 %%를 쓰면 아래 한줄 줄일 수 있을 듯*************
-			System.out.println("%");
+			System.out.printf("odds of winning : %.0f%%\n", oow);
 			System.out.println("----------------------result");
 		}
 		
